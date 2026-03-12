@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Contact Us</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Contact Us</h1>
+
+<p>Email: helicopterchurch@email.com</p>
+<p>Phone: +254 700 000000</p>
+
+<h2>About Us</h2>
+
+<p>
+Helicopter Church and Television is a ministry spreading the gospel
+through technology, media, and outreach.
+</p>
+
+<a href="index.html">Back Home</a>
+
+</body>
+</html>

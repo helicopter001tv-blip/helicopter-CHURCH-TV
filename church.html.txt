@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Helicopter Church</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<h1>Helicopter Church Ministry</h1>
+
+<p>
+Helicopter Church ministry reaches people in remote areas
+through air missions, preaching the gospel and providing help.
+</p>
+
+<h2>Our Mission</h2>
+
+<p>
+To spread the gospel of Jesus Christ to every nation.
+</p>
+
+<a href="index.html">Back Home</a>
+
+</body>
+</html>

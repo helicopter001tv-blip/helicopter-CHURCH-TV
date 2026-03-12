@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>Helicopter Church TV</title>
+<link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+<header>
+<h1>Helicopter Church & Television</h1>
+
+<nav>
+<a href="index.html">Home</a>
+<a href="blogs.html">Blogs</a>
+<a href="news.html">News</a>
+<a href="church.html">Helicopter Church</a>
+<a href="contact.html">Contact</a>
+</nav>
+</header>
+
+<section>
+
+<h2>Welcome</h2>
+
+<p>
+Welcome to Helicopter Church and Television.
+We share the word of God, church news, blogs, and live ministry updates.
+</p>
+
+</section>
+
+<footer>
+<p>© 2026 Helicopter Church TV</p>
+</footer>
+
+</body>
+</html>
