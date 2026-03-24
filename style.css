@@ -233,7 +233,9 @@ a {
 
 .hero-card img {
   height: 250px;
-  object-fit: cover;
+  object-fit: contain;
+  background: #ffffff;
+  padding: 20px;
 }
 
 .hero-card-body {
