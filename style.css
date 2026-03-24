@@ -370,6 +370,10 @@ a {
 }
 
 /* VIDEO */
+.video-section {
+  padding-top: 55px;
+}
+
 .video-box {
   background: var(--white);
   border: 1px solid var(--border);
