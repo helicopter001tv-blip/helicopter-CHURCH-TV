@@ -343,7 +343,26 @@ img {
   padding: 24px 0;
   margin-top: 20px;
 }
+.video-box {
+  background: var(--white);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  box-shadow: var(--shadow);
+  overflow: hidden;
+}
 
+.video-box video {
+  width: 100%;
+  display: block;
+  max-height: 520px;
+  background: #000000;
+}
+
+.hero-home {
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+}
 .footer-wrap {
   text-align: center;
 }
