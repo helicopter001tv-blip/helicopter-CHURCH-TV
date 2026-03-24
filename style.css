@@ -6,14 +6,17 @@
 
 :root {
   --primary: #0f172a;
-  --secondary: #e11d48;
+  --secondary: #dc2626;
   --accent: #f59e0b;
+  --green: #166534;
+  --blue: #1d4ed8;
+  --pink: #be123c;
   --light: #f8fafc;
   --white: #ffffff;
   --text: #1f2937;
   --muted: #64748b;
   --border: #e2e8f0;
-  --card-shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
+  --shadow: 0 10px 30px rgba(15, 23, 42, 0.08);
 }
 
 body {
@@ -23,16 +26,21 @@ body {
   line-height: 1.6;
 }
 
+img {
+  width: 100%;
+  display: block;
+}
+
 .container {
   width: 90%;
-  max-width: 1120px;
+  max-width: 1150px;
   margin: 0 auto;
 }
 
 .site-header {
   background: var(--primary);
   color: var(--white);
-  padding: 20px 0;
+  padding: 18px 0;
   border-bottom: 4px solid var(--secondary);
 }
 
@@ -45,7 +53,7 @@ body {
 }
 
 .brand h1 {
-  font-size: 1.8rem;
+  font-size: 1.9rem;
   margin-bottom: 4px;
 }
 
@@ -56,7 +64,7 @@ body {
 
 .site-nav {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -75,38 +83,83 @@ body {
   color: var(--white);
 }
 
-.hero {
-  background: linear-gradient(rgba(15, 23, 42, 0.75), rgba(15, 23, 42, 0.75)),
-    url("https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&w=1400&q=80") center/cover no-repeat;
+.ticker {
+  display: flex;
+  align-items: center;
+  background: #111827;
   color: var(--white);
-  padding: 110px 0;
+  overflow: hidden;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
 }
 
-.hero .tag {
+.ticker-label {
+  background: var(--secondary);
+  padding: 12px 18px;
+  font-weight: bold;
+  white-space: nowrap;
+}
+
+.ticker-track {
+  overflow: hidden;
+  width: 100%;
+}
+
+.ticker-move {
   display: inline-block;
-  background: rgba(255, 255, 255, 0.15);
+  white-space: nowrap;
+  padding-left: 100%;
+  animation: ticker 22s linear infinite;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+@keyframes ticker {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.hero {
+  background: linear-gradient(rgba(15, 23, 42, 0.82), rgba(15, 23, 42, 0.82)),
+    url("https://placehold.co/1600x800/0f172a/ffffff?text=Helicopter+TV+Kenya") center/cover no-repeat;
+  color: var(--white);
+  padding: 80px 0;
+}
+
+.hero-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 0.8fr;
+  gap: 28px;
+  align-items: center;
+}
+
+.tag {
+  display: inline-block;
+  background: rgba(255,255,255,0.14);
   padding: 8px 14px;
   border-radius: 999px;
-  margin-bottom: 18px;
+  margin-bottom: 16px;
   font-size: 0.92rem;
 }
 
 .hero h2 {
-  font-size: 2.8rem;
-  max-width: 760px;
+  font-size: 2.7rem;
+  line-height: 1.15;
   margin-bottom: 18px;
-  line-height: 1.2;
 }
 
 .hero p {
-  max-width: 760px;
-  font-size: 1.08rem;
+  max-width: 720px;
   margin-bottom: 24px;
+  font-size: 1.05rem;
 }
 
 .hero-buttons {
   display: flex;
-  gap: 14px;
+  gap: 12px;
   flex-wrap: wrap;
 }
 
@@ -129,6 +182,27 @@ body {
   background: transparent;
   border: 2px solid var(--white);
   color: var(--white);
+}
+
+.hero-card {
+  background: rgba(255,255,255,0.08);
+  border: 1px solid rgba(255,255,255,0.12);
+  border-radius: 16px;
+  overflow: hidden;
+  backdrop-filter: blur(4px);
+}
+
+.hero-card img {
+  height: 250px;
+  object-fit: cover;
+}
+
+.hero-card-body {
+  padding: 18px;
+}
+
+.hero-card-body h3 {
+  margin-bottom: 10px;
 }
 
 .section,
@@ -158,33 +232,48 @@ body {
 }
 
 .card,
-.panel {
+.panel,
+.news-feature,
+.mini-story {
   background: var(--white);
   border: 1px solid var(--border);
   border-radius: 14px;
-  padding: 24px;
-  box-shadow: var(--card-shadow);
+  box-shadow: var(--shadow);
+  overflow: hidden;
 }
 
-.card h4,
-.panel h3 {
+.image-card img {
+  height: 220px;
+  object-fit: cover;
+}
+
+.card-body {
+  padding: 20px;
+}
+
+.card-body h4,
+.panel h3,
+.mini-story h4 {
   color: var(--primary);
-  margin-bottom: 12px;
+  margin-bottom: 10px;
 }
 
-.card a {
+.card-body a {
   display: inline-block;
-  margin-top: 14px;
+  margin-top: 12px;
+  color: var(--secondary);
   text-decoration: none;
   font-weight: bold;
-  color: var(--secondary);
 }
 
 .split {
   display: grid;
   grid-template-columns: 1fr 1fr;
   gap: 24px;
-  align-items: start;
+}
+
+.panel {
+  padding: 24px;
 }
 
 .highlight {
@@ -196,9 +285,61 @@ body {
   padding-left: 18px;
 }
 
-.news-list {
+.mini-story img {
+  height: 190px;
+  object-fit: cover;
+}
+
+.mini-story h4,
+.mini-story p {
+  padding-left: 18px;
+  padding-right: 18px;
+}
+
+.mini-story h4 {
+  padding-top: 16px;
+}
+
+.mini-story p {
+  padding-bottom: 18px;
+}
+
+.news-grid {
   display: grid;
-  gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 22px;
+}
+
+.news-feature.large {
+  grid-column: span 2;
+}
+
+.news-feature img {
+  height: 260px;
+  object-fit: cover;
+}
+
+.news-feature.large img {
+  height: 340px;
+}
+
+.news-feature-body {
+  padding: 20px;
+}
+
+.badge {
+  display: inline-block;
+  background: var(--secondary);
+  color: var(--white);
+  font-size: 0.8rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  margin-bottom: 12px;
+}
+
+.news-feature-body h3 {
+  margin-bottom: 10px;
+  color: var(--primary);
 }
 
 .site-footer {
@@ -212,10 +353,16 @@ body {
   text-align: center;
 }
 
-@media (max-width: 900px) {
+@media (max-width: 980px) {
+  .hero-grid,
+  .split,
   .grid-3,
-  .split {
+  .news-grid {
     grid-template-columns: 1fr;
+  }
+
+  .news-feature.large {
+    grid-column: span 1;
   }
 
   .hero h2 {
@@ -224,10 +371,6 @@ body {
 }
 
 @media (max-width: 600px) {
-  .header-wrap {
-    align-items: flex-start;
-  }
-
   .site-nav {
     flex-direction: column;
     width: 100%;
@@ -238,8 +381,17 @@ body {
     width: 100%;
   }
 
+  .ticker {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .ticker-label {
+    width: 100%;
+  }
+
   .hero {
-    padding: 80px 0;
+    padding: 60px 0;
   }
 
   .hero h2 {
@@ -250,9 +402,4 @@ body {
   .section-title h3 {
     font-size: 1.6rem;
   }
-}
-background:#222;
-color:white;
-text-align:center;
-padding:10px;
 }
