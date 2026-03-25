@@ -55,7 +55,7 @@
         </div>
       </div>
 
-      <div class="hero-card">
+      <div class="hero-card church-hero-card">
         <img src="images/prophet.png" alt="Prophet Thomas Wahome" />
         <div class="hero-card-body">
           <h3>Prophet Thomas Wahome</h3>
@@ -96,19 +96,18 @@
         <p>
           Prophet Thomas Wahome began showing signs of a spiritual calling at a young age.
           As a child, he repeatedly dreamed of being in a river catching many fish. His family
-          later came to understand these dreams as signs of a prophetic calling, with the fish
-          symbolizing people and the river representing the Holy Spirit and future ministry work.
+          later understood these dreams as signs of a prophetic calling, with the fish symbolizing people
+          and the river representing the Holy Spirit and future ministry work.
         </p>
 
         <p>
           In his younger years, he drifted away from church and became a DJ in Othaya,
-          later known as <strong>DJ Fujo</strong>. Even in that season, he often played gospel music
-          and was deeply moved emotionally. In time, he realized that God was calling him into ministry.
+          later known as <strong>DJ Fujo</strong>. Over time, he realized that God was calling him into ministry.
         </p>
 
         <p>
           In 2000, he moved to Nairobi and worked as a watchman while praying at night.
-          During that period, the vision for ministry grew stronger, and he later founded
+          During that period, the vision for ministry became stronger, and he later founded
           <strong>Helicopter of Christ Church Kenya</strong>. The ministry began in Kahawa West,
           later moved to Kayole, Shauri Moyo, Nairobi town at Uyoma Street Bus Station,
           Mukuru kwa Ruben, and finally to the Langata Sanctuary in 2016.
@@ -129,42 +128,39 @@
         <p>View moments from services, worship, and church events.</p>
       </div>
 
-      <div class="church-slideshow">
-        <div class="church-slide active">
-          <img src="images/church1.png" alt="Helicopter Church photo 1" />
-          <div class="church-slide-caption">Sunday Worship Service</div>
+      <div class="church-carousel-wrap">
+        <button class="carousel-btn prev" onclick="moveChurchCarousel(-1)">❮</button>
+
+        <div class="church-carousel-window">
+          <div class="church-carousel-track" id="churchCarouselTrack">
+            <div class="church-carousel-item">
+              <img src="images/church1.png" alt="Church photo 1" />
+              <div class="church-carousel-caption">Sunday Worship Service</div>
+            </div>
+
+            <div class="church-carousel-item">
+              <img src="images/church2.png" alt="Church photo 2" />
+              <div class="church-carousel-caption">Praise and Worship</div>
+            </div>
+
+            <div class="church-carousel-item">
+              <img src="images/church3.png" alt="Church photo 3" />
+              <div class="church-carousel-caption">Prayer Session</div>
+            </div>
+
+            <div class="church-carousel-item">
+              <img src="images/church4.png" alt="Church photo 4" />
+              <div class="church-carousel-caption">Langata Sanctuary</div>
+            </div>
+
+            <div class="church-carousel-item">
+              <img src="images/church5.png" alt="Church photo 5" />
+              <div class="church-carousel-caption">Recorded Service</div>
+            </div>
+          </div>
         </div>
 
-        <div class="church-slide">
-          <img src="images/church2.png" alt="Helicopter Church photo 2" />
-          <div class="church-slide-caption">Praise and Worship Moments</div>
-        </div>
-
-        <div class="church-slide">
-          <img src="images/church3.png" alt="Helicopter Church photo 3" />
-          <div class="church-slide-caption">Prayer and Deliverance Session</div>
-        </div>
-
-        <div class="church-slide">
-          <img src="images/church4.png" alt="Helicopter Church photo 4" />
-          <div class="church-slide-caption">Church Gathering at Langata</div>
-        </div>
-
-        <div class="church-slide">
-          <img src="images/church5.png" alt="Helicopter Church photo 5" />
-          <div class="church-slide-caption">Recorded Church Service</div>
-        </div>
-
-        <button class="slide-btn prev" onclick="changeChurchSlide(-1)">❮</button>
-        <button class="slide-btn next" onclick="changeChurchSlide(1)">❯</button>
-      </div>
-
-      <div class="slide-dots">
-        <span class="dot active" onclick="currentChurchSlide(0)"></span>
-        <span class="dot" onclick="currentChurchSlide(1)"></span>
-        <span class="dot" onclick="currentChurchSlide(2)"></span>
-        <span class="dot" onclick="currentChurchSlide(3)"></span>
-        <span class="dot" onclick="currentChurchSlide(4)"></span>
+        <button class="carousel-btn next" onclick="moveChurchCarousel(1)">❯</button>
       </div>
     </section>
 
@@ -216,37 +212,54 @@
   </footer>
 
   <script>
-    let churchSlideIndex = 0;
-    const churchSlides = document.querySelectorAll(".church-slide");
-    const churchDots = document.querySelectorAll(".dot");
+    const churchCarouselTrack = document.getElementById("churchCarouselTrack");
+    let churchCarouselIndex = 0;
 
-    function showChurchSlide(index) {
-      if (index >= churchSlides.length) {
-        churchSlideIndex = 0;
-      } else if (index < 0) {
-        churchSlideIndex = churchSlides.length - 1;
-      } else {
-        churchSlideIndex = index;
+    function getVisibleChurchItems() {
+      if (window.innerWidth <= 600) return 1;
+      if (window.innerWidth <= 900) return 2;
+      return 3;
+    }
+
+    function moveChurchCarousel(step) {
+      const items = document.querySelectorAll(".church-carousel-item");
+      if (!items.length) return;
+
+      const visibleItems = getVisibleChurchItems();
+      const maxIndex = items.length - visibleItems;
+
+      churchCarouselIndex += step;
+
+      if (churchCarouselIndex < 0) churchCarouselIndex = 0;
+      if (churchCarouselIndex > maxIndex) churchCarouselIndex = maxIndex;
+
+      const itemWidth = items[0].offsetWidth + 16;
+      churchCarouselTrack.style.transform = `translateX(-${churchCarouselIndex * itemWidth}px)`;
+    }
+
+    function autoChurchCarousel() {
+      const items = document.querySelectorAll(".church-carousel-item");
+      if (!items.length) return;
+
+      const visibleItems = getVisibleChurchItems();
+      const maxIndex = items.length - visibleItems;
+
+      churchCarouselIndex++;
+
+      if (churchCarouselIndex > maxIndex) {
+        churchCarouselIndex = 0;
       }
 
-      churchSlides.forEach((slide) => slide.classList.remove("active"));
-      churchDots.forEach((dot) => dot.classList.remove("active"));
-
-      churchSlides[churchSlideIndex].classList.add("active");
-      churchDots[churchSlideIndex].classList.add("active");
+      const itemWidth = items[0].offsetWidth + 16;
+      churchCarouselTrack.style.transform = `translateX(-${churchCarouselIndex * itemWidth}px)`;
     }
 
-    function changeChurchSlide(step) {
-      showChurchSlide(churchSlideIndex + step);
-    }
+    setInterval(autoChurchCarousel, 3500);
 
-    function currentChurchSlide(index) {
-      showChurchSlide(index);
-    }
-
-    setInterval(() => {
-      showChurchSlide(churchSlideIndex + 1);
-    }, 4000);
+    window.addEventListener("resize", () => {
+      churchCarouselIndex = 0;
+      churchCarouselTrack.style.transform = "translateX(0)";
+    });
   </script>
 </body>
 </html>
